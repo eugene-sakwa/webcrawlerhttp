@@ -1,9 +1,9 @@
-import {normalizeURL} from "./crawl.js";
-import { test, expect } from "@jest/globals";
+const normalizeURL = require("./crawl.js");
+const { test, expect } = require("@jest/globals");
 
-test("normalizeURl", () => {
-  const input = '';
+test("normalizeURL", () => {
+  const input = "";
   const actual = normalizeURL(input);
-  const expected = '';
+  const expected = "";
   expect(actual).toEqual(expected);
 });
