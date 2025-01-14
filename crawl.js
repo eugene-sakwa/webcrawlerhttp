@@ -1,11 +1,15 @@
-const { JSDOM} = require('jsdom')
+const { JSDOM } = require("jsdom");
 
 const getURLsFromHTML = (htmlBody, baseURL) => {
   const urls = [];
-  const dom = new JSDOM( htmlBody);
-  const linkElements = dom.window.document.querySelectorAll('a')
-  for( let linkElement of linkElements){
-    urls.push(linkElement.href);
+  const dom = new JSDOM(htmlBody);
+  const linkElements = dom.window.document.querySelectorAll("a");
+  for (let linkElement of linkElements) {
+    if (linkElement.href.slice(0, 1) === "/") {
+      urls.push(`${baseURL}${linkElement.href}`);
+    } else {
+      urls.push(linkElement.href);
+    }
   }
   return urls;
 };
